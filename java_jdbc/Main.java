@@ -8,12 +8,13 @@ public class Main {
         AlunoMysqlRepository repository = new AlunoMysqlRepository();
 
         // Criar aluno
-        Aluno aluno = new Aluno("1", "João Silva", "joao@email.com", "11999999999");
+        Aluno aluno = new Aluno("2", "João Gomes", "joaoneres@email.com", "11999999999");
         aluno = repository.save(aluno);
         System.out.println("Aluno salvo: " + aluno);
 
         // Buscar todos
-        List<Aluno> alunos = repository.findAll();
+        ListAlunosUseCase listAlunosUseCase = new ListAlunosUseCase(repository);
+        List<Aluno> alunos = listAlunosUseCase.execute();
         alunos.forEach(System.out::println);
     }
 }
